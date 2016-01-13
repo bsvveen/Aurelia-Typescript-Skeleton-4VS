@@ -1,0 +1,29 @@
+// A task runner that calls gulp build
+{
+	"version": "0.1.0",
+	"command": "gulp",
+	"isShellCommand": true,
+	"tasks": [
+		{
+			"taskName": "build",
+			// Make this the default build command.
+			"isBuildCommand": true,
+			// Show the output window only if unrecognized errors occur.
+			"showOutput": "silent",
+			// Use the standard compilation problem matcher.
+			"problemMatcher": [
+				"$gulp-tsc"
+			]
+		},
+		{
+			"taskName": "watch",
+      "isWatching": true,
+			// Show the output window only if unrecognized errors occur.
+			"showOutput": "silent",
+			// Use the standard compilation problem matcher.
+			"problemMatcher": [
+				"$gulp-tsc"
+			]
+		}
+	]
+}
