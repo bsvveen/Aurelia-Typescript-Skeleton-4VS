@@ -80,3 +80,31 @@ This might cause some issues, [you can synchronize the NodeJs version used by Vi
 
 > **Note:** A tsconfig.json is not required in we Visual Studio Typescript project. The rquired settings are set in the project file. 
 
+### Some notes on typescript debugging in Visual Studio using SystemJS
+
+Problem with Systemjs is that de js files are loaded trough ajax which disables the typescript debugging by Visual Studio. 
+Systemjs config, has a setting which enables the loading of js files using a normal script tag.
+
+`meta: {
+    "pathtomodule": {
+      "scriptLoad": true,
+      "format": "global"
+    },...
+`
+
+However this requires this setting to be set for each page/module inside the application. 
+I am currently trying to find a more global configuration setting but i am still encountering errors.
+
+```
+
+packages: {
+    "pages": {
+        defaultExtension: "js",
+        modules: {
+            '*.html': { scriptLoad: false, loader: 'text' },
+            '*.js': { scriptLoad: true, format: "global" }
+        }
+    }
+},
+
+```
