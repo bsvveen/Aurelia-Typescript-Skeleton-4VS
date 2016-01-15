@@ -1,42 +1,82 @@
- aurelia-skeleton-navigation-ts-vscode
 
-[![ZenHub](https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png)](https://zenhub.io)
+## Aurelia Typescript Skeleton for VisualStudio
+
+This project provides an Aurelia skeleton application written in Typescript, using SystemJs/Jspm as module loader/packager and is configured to run in Visual Studio. 
+Typescript debugging should be working, the breakpoints are hit. SystemJS is configured to NOT transpile on the browser, the intention is that Visual Studio transpiles 
+Typesscript to ES5 while building the project. Testing and deployment/bundling is not covered by this project.
+
 [![Join the chat at https://gitter.im/aurelia/discuss](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/aurelia/discuss?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-This skeleton is part of the [Aurelia](http://www.aurelia.io/) platform. It sets up a standard navigation-style app using gulp to build your TypeScript code. Karma/Protractor/Jasmine testing is also configured.
+> To keep up to date on [Aurelia](http://www.aurelia.io/), please visit and subscribe to [the official blog](http://blog.durandal.io/). 
+If you have questions, we invite you to [join us on Gitter](https://gitter.im/aurelia/discuss). 
 
-> To keep up to date on [Aurelia](http://www.aurelia.io/), please visit and subscribe to [the official blog](http://blog.durandal.io/). If you have questions, we invite you to [join us on Gitter](https://gitter.im/aurelia/discuss). If you would like to have deeper insight into our development process, please install the [ZenHub](https://zenhub.io) Chrome/Firefox Extension and visit any of our repository's boards. You can get an overview of all Aurelia work by visiting [the framework board](https://github.com/aurelia/framework#boards).
-
-## Running The App
+### Running The App
 
 To run the app, follow these steps.
 
-1. Ensure that [NodeJS](http://nodejs.org/) is installed. This provides the platform on which the build tooling runs.
-2. From the project folder, execute the following command:
-  ```shell
-  npm install
-  ```
-3. Ensure that [Gulp](http://gulpjs.com/) is installed globally. If you need to install it, use the following command:
-  ```shell
-  npm install -g gulp
-  ```
-  > **Note:** Gulp must be installed globally, but a local version will also be installed to ensure a compatible version is used for the project.
-4. Ensure that [jspm](http://jspm.io/) is installed globally. If you need to install it, use the following command:
-  ```shell
+* Ensure that [NodeJS](http://nodejs.org/) is installed. This provides the platform on which the build tooling runs.
+
+* Ensure that [Jspm](http://jspm.io/) is installed globally. If you need to install it, use the following command:
+  
+```shell
   npm install -g jspm
-  ```
+```
+
+* Ensure that [tsd](http://definitelytyped.org/tsd/) is installed globally. If you need to install it, use the following command:
+
+```shell
+  npm install tsd -g
+```
+
   > **Note:** jspm must be installed globally, but a local version will also be installed to ensure a compatible version is used for the project.
 
-  > **Note:** Sometimes jspm queries GitHub to install packages, but GitHub has a rate limit on anonymous API requests. If you receive a rate limit error, you need to configure jspm with your GitHub credentials. You can do this by executing `jspm registry config github` and following the prompts. If you choose to authorize jspm by an access token instead of giving your password (see GitHub `Settings > Personal Access Tokens`), `public_repo` access for the token is required.
-5. Install the client-side dependencies with jspm:
+  > **Note:** Sometimes jspm queries GitHub to install packages, but GitHub has a rate limit on anonymous API requests. 
+If you receive a rate limit error, you need to configure jspm with your GitHub credentials. You can do this by executing 
+`jspm registry config github` and following the prompts. If you choose to authorize jspm by an access token instead of giving your 
+password (see GitHub `Settings > Personal Access Tokens`), `public_repo` access for the token is required.
 
-  ```shell
-  jspm install -y
-  ```
-  >**Note:** Windows users, if you experience an error of "unknown command unzip" you can solve this problem by doing `npm install -g unzip` and then re-running `jspm install`.
+* Install the required modules and typescript definitions, from the project folder, execute the following commands:
 
-6. Build and run the project:
+```shell
+npm install
 
-  ```shell
-  Open in latest visual studio 2015, build the project and debug in Internet Explorer.
-  ```
+jspm install -y
+
+tsd install
+```
+
+>**Note:** Windows users, if you experience an error of "unknown command unzip" you can solve this problem by doing `npm install -g unzip` and then re-running `jspm install`.
+
+* Open Aurelia-Typescript-Skeleton-4VS.sln in Visual Studio 2015.
+
+ > **Note:** Visual Studio will automatically execute NPM Install upon the opening of the project. This might take a while and you have to wait until the job is finished. 
+
+* Build the project and debug using Internet Explorer
+
+> **Note:** If you encounter build errors, try re-installing the npm and or jspm modules. 
+
+> **Note:** For the typescript breakpoints to be hit some settings had to be made in config.js. For each individual 
+TS file a line was added to the META section telling systemJs to load the file using a script tag and not trough xhr. So if you add new Typescript files also add them to the config.js
+  
+> **Note:** Most typings will be found inside the JSPM folder (the jspm_packages folder should therefore be included in the project, for the node_modules folder this is not required) but some packages don't have their own definition (d.ts)
+files. For those packages a definition files should be placed inside the typings map, these definitons are listed inside the tsd.json. If these definitions are somehow missing (re)execute the "tsd install" command.
+
+ 
+### Some notes on using Node and VisualStudio
+
+ > **Note:** Older versions of NodeJs will store the Node Modules in a nested way, resulting in, sometimes, very long paths to the files. 
+These long paths cannot be handled bij Windows, which resuklts in errors when you for examples want to delete the Node_modules folder. 
+You van use the NPM package [Flatten-Packages](https://www.npmjs.com/package/flatten-packages) to 'Flatten' the packages inside de 
+node_modules folder. This package is also available as [Visualstudio Extention](https://visualstudiogallery.msdn.microsoft.com/cd0b1938-4513-4e57-b9b7-c674b4a20e79)
+
+> **Note:** The version of NodeJs which is used bij Visual Studio is not necessary the same version as the version you installed your self. 
+This might cause some issues, [you can synchronize the NodeJs version used by VisuaStudio](http://ryanhayes.net/synchronize-node-js-install-version-with-visual-studio-2015/).
+
+> **Note:** If you want to see the Typescript Visual Project go to: Tools -> Options --> Text Editor --> TypeScript --> Project and check the "Display virtual project when.." checkboxes.
+
+> **Note:** If you encounter the error "error TS2300: Duplicate identifier '***.d.ts'", see if you have a locally installed npm typescript module. If so remove it.
+
+> **Note:** This project uses the Visual Studio project template "HTML application with typescript". open the project properties -> Typescript build to set the module system to AMD. 
+
+> **Note:** A tsconfig.json is not required in we Visual Studio Typescript project. The rquired settings are set in the project file. 
+
