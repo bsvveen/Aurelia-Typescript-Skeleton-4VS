@@ -35,6 +35,8 @@ If you receive a rate limit error, you need to configure jspm with your GitHub c
 `jspm registry config github` and following the prompts. If you choose to authorize jspm by an access token instead of giving your 
 password (see GitHub `Settings > Personal Access Tokens`), `public_repo` access for the token is required.
 
+  > **Note:** this project is not using Gulp.
+
 * Install the required modules and typescript definitions, from the project folder, execute the following commands:
 
 ```shell
