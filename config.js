@@ -37,13 +37,17 @@ System.config({
       "scriptLoad": true,
       "format": "global"
     },
-    "pages/flickr": {
+    "pages/list": {
       "scriptLoad": true,
       "format": "global"
     },
-    "pages/child-router": {
+    "pages/insert": {
       "scriptLoad": true,
       "format": "global"
+    },
+    "pages/edit": {
+        "scriptLoad": true,
+        "format": "global"
     }
   },
 

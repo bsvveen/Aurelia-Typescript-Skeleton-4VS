@@ -1,0 +1,54 @@
+<template>
+    <section>
+        <h2>Insert Contact</h2>
+        <form role="form" submit.delegate="insertContact()">
+            <div class="form-group">
+                <label for="firstName">First name</label>
+                <input type="text" value.bind="firstName" class="form-control" id="firstName" placeholder="First name*">
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last name</label>
+                <input type="text" value.bind="lastName" class="form-control" id="lastName" placeholder="Last name*">
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" value.bind="address" class="form-control" id="address" placeholder="Street and number">
+            </div>
+
+            <div class="form-group">
+                <label for="zipCode">Zip code</label>
+                <input type="text" value.bind="zipCode" class="form-control" id="zipCode" placeholder="Zip code*">
+            </div>
+
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" value.bind="city" class="form-control" id="city" placeholder="City*">
+            </div>
+
+            <div class="form-group">
+                <label for="telephone">Telephone</label>
+                <input type="text" value.bind="telephone" class="form-control" id="telephone" placeholder="Telephone number*">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" value.bind="email" class="form-control" id="email" placeholder="Email address*">
+            </div>
+
+            <div class="form-group">
+                <label for="birthDate">Birth date</label>
+                <input type="text" value.bind="birthDate" class="form-control" id="birthDate" placeholder="Birth date (YYYY/MM/DD)*">
+            </div>
+
+            <div class="form-group" show.bind="isInserted">
+                <span class="label label-success" show.bind="statusCode==201">Contact has been inserted!</span>
+                <span class="label label-danger" show.bind="statusCode!=201">Contact NOT inserted (use a unique email address)!</span>
+            </div>
+            <button type="submit" class="btn btn-default" disabled.bind="!canSave">Save Contact</button>
+            <a href="#/contactslist" class="btn btn-primary">${textShowAll}</a>
+        </form>
+        <label>${statusText}</label>
+    </section>
+</template>
