@@ -5,7 +5,7 @@ export function configure(aurelia: Aurelia) {
     aurelia.use
         .standardConfiguration()
         .developmentLogging()
-        .plugin("httpConfiguration");
+        .plugin("aurelia-dialog");
 
     aurelia.start().then(() => {
         aurelia.setRoot("app");

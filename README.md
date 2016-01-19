@@ -76,11 +76,15 @@ This might cause some issues, [you can synchronize the NodeJs version used by Vi
 
 > **Note:** If you want to see the Typescript Visual Project go to: Tools -> Options --> Text Editor --> TypeScript --> Project and check the "Display virtual project when.." checkboxes.
 
-> **Note:** If you encounter the error "error TS2300: Duplicate identifier '***.d.ts'", see if you have a locally installed npm typescript module. If so remove it.
+> **Note:** If you encounter the error "error TS2300: Duplicate identifier '***.d.ts'", see if you have a locally installed npm typescript module. If so remove it if not check if you have duplicate packages folders, this happens after een update, see below..
 
 > **Note:** This project uses the Visual Studio project template "HTML application with typescript". open the project properties -> Typescript build to set the module system to AMD. 
 
 > **Note:** A tsconfig.json is not required in we Visual Studio Typescript project. The rquired settings are set in the project file. 
+
+> **Note:** After an Jspm update the first build will probably fail with errors like: 'xxx not found' or 'Duplicate identifier '***.d.ts'. 
+Problem here is that new packages are downloaded bij JSPM but not automatically included in your project. On the old packages are deleted by Jspm but not excluded form the project. 
+So you have to fix this manually.
 
 ### Some notes on typescript debugging in Visual Studio using SystemJS
 

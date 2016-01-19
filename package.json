@@ -41,9 +41,9 @@
   },
   "jspm": {
     "dependencies": {
-      "adal": "github:azuread/azure-activedirectory-library-for-js@1.0.7",
       "aurelia-animator-css": "npm:aurelia-animator-css@^1.0.0-beta.1",
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0-beta.1",
+      "aurelia-dialog": "npm:aurelia-dialog@^0.5.3",
       "aurelia-fetch-client": "npm:aurelia-fetch-client@^1.0.0-beta.1",
       "aurelia-framework": "npm:aurelia-framework@^1.0.0-beta.1",
       "aurelia-history-browser": "npm:aurelia-history-browser@^1.0.0-beta.1",
