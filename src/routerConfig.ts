@@ -17,8 +17,9 @@ export class RouterConfig {
             config.mapUnknownRoutes(instruction => {instruction.config.moduleId = "pages/welcome"; return instruction;});
             config.map([
                 { route: ["", "welcome"], name: "welcome", moduleId: "pages/welcome", nav: true, title: "Welcome" },
+                { route: "basicpage", name: "basicpage", moduleId: "pages/basicpage", nav: true, title: "Basic page" },
                 { route: "users", name: "users", moduleId: "pages/users", nav: true, title: "Github Users" },
-                { route: "list", name: "list", moduleId: "pages/list", nav: true, title: "List" },
+                { route: "list", name: "list", moduleId: "pages/list", nav: true, title: "List Detail" },
                 { route: "contacts/:id/detail", name: "Edit", moduleId: "pages/edit" },
                 { route: "insert", moduleId: "pages/insert", title: "Insert Contact" }
             ]);

@@ -2,7 +2,7 @@
 <template>
     <ai-dialog>
         <ai-dialog-body>
-            <h3>${user.login.firstName}</h3>
+            <h3>${contact.firstName} ${contact.lastName} - ${contact.email}</h3>
         </ai-dialog-body>
         <ai-dialog-footer>
             <button class="btn btn-default" click.trigger="controller.cancel()">Cancel</button>

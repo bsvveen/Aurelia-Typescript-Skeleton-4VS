@@ -1,9 +1,9 @@
 
 ## Aurelia Typescript Skeleton for VisualStudio
 
-This project provides an Aurelia skeleton application written in Typescript, using SystemJs/Jspm as module loader/packager and is configured to run in Visual Studio. 
-Typescript debugging should be working, the breakpoints are hit. SystemJS is configured to NOT transpile on the browser, the intention is that Visual Studio transpiles 
-Typesscript to ES5 while building the project. Testing and deployment/bundling is not covered by this project.
+This project provides an Aurelia skeleton application written in Typescript, using Systemjs/Jspm as module loader/packager and is configured to run in Visual Studio. 
+Typescript debugging, in Visual Studio, does work in this project, the breakpoints are hit. SystemJS is configured to NOT transpile on the browser, the intention is that Visual Studio transpiles 
+Typesscript to ES5 while building the project, therefore Gulp is not used in this project. Testing and deployment/bundling is not covered by this project.
 
 [![Join the chat at https://gitter.im/aurelia/discuss](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/aurelia/discuss?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -28,14 +28,12 @@ To run the app, follow these steps.
   npm install tsd -g
 ```
 
-  > **Note:** jspm must be installed globally, but a local version will also be installed to ensure a compatible version is used for the project.
+  > **Note:** Jspm must be installed globally, but a local version will also be installed to ensure a compatible version is used for the project.
 
-  > **Note:** Sometimes jspm queries GitHub to install packages, but GitHub has a rate limit on anonymous API requests. 
-If you receive a rate limit error, you need to configure jspm with your GitHub credentials. You can do this by executing 
-`jspm registry config github` and following the prompts. If you choose to authorize jspm by an access token instead of giving your 
+  > **Note:** Sometimes Jspm queries GitHub to install packages, but GitHub has a rate limit on anonymous API requests. 
+If you receive a rate limit error, you need to configure Jspm with your GitHub credentials. You can do this by executing 
+`jspm registry config github` and following the prompts. If you choose to authorize Jspm by an access token instead of giving your 
 password (see GitHub `Settings > Personal Access Tokens`), `public_repo` access for the token is required.
-
-  > **Note:** this project is not using Gulp.
 
 * Install the required modules and typescript definitions, from the project folder, execute the following commands:
 
@@ -60,30 +58,30 @@ tsd install
 > **Note:** For the typescript breakpoints to be hit some settings had to be made in config.js. For each individual 
 TS file a line was added to the META section telling systemJs to load the file using a script tag and not trough xhr. So if you add new Typescript files also add them to the config.js
   
-> **Note:** Most typings will be found inside the JSPM folder (the jspm_packages folder should therefore be included in the project, for the node_modules folder this is not required) but some packages don't have their own definition (d.ts)
-files. For those packages a definition files should be placed inside the typings map, these definitons are listed inside the tsd.json. If these definitions are somehow missing (re)execute the "tsd install" command.
+> **Note:** Most typings will be found inside the Jspm folder (the jspm_packages folder should therefore be included in the project, for the node_modules folder this is not required) but some packages don't have their own definition (d.ts)
+files. For those packages (a) definition file(s) should be placed inside the typings folder, these definitons are listed inside the tsd.json. If these definitions are somehow missing, (re)execute the "tsd install" command.
 
  
 ### Some notes on using Node and VisualStudio
 
- > **Note:** Older versions of NodeJs will store the Node Modules in a nested way, resulting in, sometimes, very long paths to the files. 
-These long paths cannot be handled bij Windows, which resuklts in errors when you for examples want to delete the Node_modules folder. 
-You van use the NPM package [Flatten-Packages](https://www.npmjs.com/package/flatten-packages) to 'Flatten' the packages inside de 
+ > **Note:** Older versions of NodeJs will store the Node Modules in a nested way, resulting in, sometimes, very long paths to these files. 
+These long paths cannot be handled bij Windows, which results in errors when you for examples want to delete the node_modules folder. 
+You can use the NPM package [Flatten-Packages](https://www.npmjs.com/package/flatten-packages) to 'Flatten' the packages inside de 
 node_modules folder. This package is also available as [Visualstudio Extention](https://visualstudiogallery.msdn.microsoft.com/cd0b1938-4513-4e57-b9b7-c674b4a20e79)
 
-> **Note:** The version of NodeJs which is used bij Visual Studio is not necessary the same version as the version you installed your self. 
+> **Note:** The version of NodeJs which is used bij Visual Studio is not necessary the same version as the version you installed yourself. 
 This might cause some issues, [you can synchronize the NodeJs version used by VisuaStudio](http://ryanhayes.net/synchronize-node-js-install-version-with-visual-studio-2015/).
 
 > **Note:** If you want to see the Typescript Visual Project go to: Tools -> Options --> Text Editor --> TypeScript --> Project and check the "Display virtual project when.." checkboxes.
 
-> **Note:** If you encounter the error "error TS2300: Duplicate identifier '***.d.ts'", see if you have a locally installed npm typescript module. If so remove it if not check if you have duplicate packages folders, this happens after een update, see below..
+> **Note:** If you encounter the error "error TS2300: Duplicate identifier '***.d.ts'", see if you have a locally installed Npm typescript module. If so remove , if not check if you have duplicate packages folders, this happens after een update, see below..
 
-> **Note:** This project uses the Visual Studio project template "HTML application with typescript". open the project properties -> Typescript build to set the module system to AMD. 
+> **Note:** This project uses the Visual Studio project template "HTML application with typescript", with AMD as module system. (see: project properties -> Typescript build). 
 
-> **Note:** A tsconfig.json is not required in we Visual Studio Typescript project. The rquired settings are set in the project file. 
+> **Note:** A tsconfig.json is not required in a Visual Studio Typescript project. The required settings are set in the project file. 
 
 > **Note:** After an Jspm update the first build will probably fail with errors like: 'xxx not found' or 'Duplicate identifier '***.d.ts'. 
-Problem here is that new packages are downloaded bij JSPM but not automatically included in your project. On the old packages are deleted by Jspm but not excluded form the project. 
+Problem here is that new packages are downloaded bij Jspm but not automatically included in your project. Old packages are deleted by Jspm but not excluded from your project. 
 So you have to fix this manually.
 
 ### Some notes on typescript debugging in Visual Studio using SystemJS

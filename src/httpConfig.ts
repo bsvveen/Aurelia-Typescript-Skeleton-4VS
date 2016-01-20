@@ -8,7 +8,8 @@ export function configure(aurelia: Aurelia) {
     var httpClient = aurelia.container.get(HttpClient);
 
     httpClient.configure(config => {
-        config            
+        config       
+            //.WithBaseUrl("xxx")  
             .withDefaults({
                 headers: {
                     'Accept': 'application/json',
