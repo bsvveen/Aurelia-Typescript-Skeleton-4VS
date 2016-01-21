@@ -100,7 +100,6 @@ However this requires this setting to be set for each page/module inside the app
 I am currently trying to find a more global configuration setting but i am still encountering errors.
 
 ```
-
 packages: {
     "pages": {
         defaultExtension: "js",

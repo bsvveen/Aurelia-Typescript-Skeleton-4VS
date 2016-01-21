@@ -24,7 +24,7 @@ export function configure(aurelia: Aurelia) {
                 },
                 response(response) {
                     console.log(`Received ${response.status} ${response.url}`);
-                    return response; // you can return a modified Response
+                    return response;
                 }
             });
     });
